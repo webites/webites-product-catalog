@@ -28,3 +28,39 @@
 .single-products h2 {
     color: gray;
 }
+
+.single-products .post-tax {
+    display: flex;
+    justify-content: center;
+}
+
+.single-products .post-tax .post-tax-cat,
+.single-products .post-tax .post-tax-tag{
+    padding: 1rem;
+    width: 30%;
+}
+
+.single-products .post-tax .post-tax-cat h2,
+.single-products .post-tax .post-tax-tag h2{
+    text-align: center;
+}
+
+.single-products .post-tax .post-tax-cat ul,
+.single-products .post-tax .post-tax-tag ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.single-products .post-tax .post-tax-cat ul li,
+.single-products .post-tax .post-tax-tag ul li{
+    background-color: gray;
+    padding: .4rem .8rem;
+    margin: .4rem;
+}
+
+.single-products .post-tax .post-tax-cat ul li a,
+.single-products .post-tax .post-tax-tag ul li a{
+    color: white;
+}

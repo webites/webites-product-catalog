@@ -22,6 +22,18 @@
     $available = get_post_meta( $post->ID, 'wb_products_available', true );
 ?>
 
+<div class="post-tax">
+    <div class="post-tax-cat">
+         <?php echo get_the_term_list( get_the_id(), 'products-cat',  "<h2>". __('Product categories', 'wb-product-catalog') . " </h2><ul><li>","</li><li>" ,"</li></ul>" ); ?>
+    </div>
+
+    <div class="post-tax-tag">
+         <?php echo get_the_term_list( get_the_id(), 'products-tag',  "<h2>". __('Product tags', 'wb-product-catalog') . " </h2><ul><li>","</li><li>" ,"</li></ul>" ); ?>
+    </div>
+
+
+</div>
+
 <?php 
     if ( $colors || $dimensions || $sku || $series || $type || $price ) {
         ?>
