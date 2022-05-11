@@ -99,7 +99,29 @@ function wb_free_catalog_template_single_product( $page_template )
 
 // end single post templates
 
+// category - product - template
 
+add_filter( "taxonomy_template", 'wb_free_catalog_template_category_template');
+function wb_free_catalog_template_category_template ($tax_template) {
+  if (is_tax('products-cat')) {
+    $tax_template = dirname(  __FILE__  ) . '/templates/archive-template.php';
+  }
+  return $tax_template;
+}
+
+// end category temaplate
+
+// tag - product - template
+
+add_filter( "taxonomy_template", 'wb_free_catalog_template_tag_template');
+function wb_free_catalog_template_tag_template ($tax_template) {
+  if (is_tax('products-tag')) {
+    $tax_template = dirname(  __FILE__  ) . '/templates/archive-template.php';
+  }
+  return $tax_template;
+}
+
+// end tag temaplate
 
 
 

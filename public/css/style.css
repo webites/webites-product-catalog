@@ -1,3 +1,9 @@
+.single-products .post-image {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+}
+
 .single-products .post-image img{
     margin: auto;
     display: block;
@@ -63,4 +69,115 @@
 .single-products .post-tax .post-tax-cat ul li a,
 .single-products .post-tax .post-tax-tag ul li a{
     color: white;
+}
+
+.post-available-icon-yes{
+    width: 10%;
+    fill: green;
+
+    position: absolute;
+    bottom: -2%;
+    left: -2%;
+    z-index: 100;
+}
+
+.post-available-text-yes{
+    /* padding: 2%; */
+    margin: 0;
+    /* background-color: green; */
+    position: absolute;
+    bottom: -2%;
+    left: 1%;
+    border-radius: 15%;
+    font-size: 2rem;
+    /* color: white; */
+    z-index: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all .4s ease;
+}
+
+.post-available-icon-yes:hover ~ .post-available-text-yes{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(8%);
+    z-index: 1;
+    padding-left: 7%;
+}
+
+.post-available-icon-no{
+    width: 10%;
+    fill: red;
+
+    position: absolute;
+    bottom: -2%;
+    left: -2%;
+    z-index: 100;
+}
+
+.post-available-text-no{
+    margin: 0;
+    position: absolute;
+    bottom: -2%;
+    left: 1%;
+    border-radius: 15%;
+    font-size: 2rem;
+    z-index: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all .4s ease;
+}
+
+.post-available-icon-no:hover ~ .post-available-text-no{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(8%);
+    z-index: 1;
+    padding-left: 7%;
+}
+
+
+/* archive loop styles */
+
+.wb-archive-loop_container{
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.wb-archive-loop_container .item {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--wp--preset--color--white);
+    color: var(--wp--preset--color--vivid-cyan-blue);
+    padding: 1rem 0;
+    border-radius: 8px;
+    border: 2px solid var(--global--color-primary);
+}
+
+.wb-archive-loop_container .item *{
+    margin: 0.6rem auto;
+}
+
+.wb-archive-loop_container .item .wp-post-image{
+    object-fit: contain;
+    max-height: 400px;
+}
+
+.tax-products-cat .page-title{
+    text-align: center;
+}
+.tax-products-tag .page-title{
+    text-align: center;
+}
+
+.tax-products-cat .taxonomy-description{
+    text-align: center;
 }
