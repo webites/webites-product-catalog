@@ -21,6 +21,13 @@ function wb_add_style_to_free_catalog_plugin(){
 }
 add_action( 'wp_enqueue_scripts', 'wb_add_style_to_free_catalog_plugin');
 
+//admin styles
+
+function wb_add_style_to_free_catalog_plugin_admin_css(){
+	wp_enqueue_style( 'webites__free_catalog_stylesheet_admin', plugin_dir_url(__FILE__) . '/css/style.css', array(), filemtime( plugin_dir_path(__FILE__) . 'css/style.css' ), 'all');
+}
+add_action( 'admin_enqueue_scripts', 'wb_add_style_to_free_catalog_plugin_admin_css');
+
 
  // create CPT - products
 
@@ -101,10 +108,34 @@ function wb_free_catalog_template_single_product( $page_template )
 
 // category - product - template
 
+$archive_layout = get_option('wbcp_archive_layout');
+
+if ($archive_layout == "grid") {
+
+
+  add_filter( "taxonomy_template", 'wb_free_catalog_template_category_template');
+    function wb_free_catalog_template_category_template ($tax_template) {
+      if (is_tax('products-cat')) {
+        $tax_template = dirname(  __FILE__  ) . '/templates/archive-template.php';
+      }
+      return $tax_template;
+    }
+
+  add_filter( "taxonomy_template", 'wb_free_catalog_template_tag_template');
+    function wb_free_catalog_template_tag_template ($tax_template) {
+      if (is_tax('products-tag')) {
+        $tax_template = dirname(  __FILE__  ) . '/templates/archive-template.php';
+      }
+      return $tax_template;
+    }
+
+} else {
+
+  
 add_filter( "taxonomy_template", 'wb_free_catalog_template_category_template');
 function wb_free_catalog_template_category_template ($tax_template) {
   if (is_tax('products-cat')) {
-    $tax_template = dirname(  __FILE__  ) . '/templates/archive-template.php';
+    $tax_template = dirname(  __FILE__  ) . '/templates/archive-no-grid-template.php';
   }
   return $tax_template;
 }
@@ -116,10 +147,13 @@ function wb_free_catalog_template_category_template ($tax_template) {
 add_filter( "taxonomy_template", 'wb_free_catalog_template_tag_template');
 function wb_free_catalog_template_tag_template ($tax_template) {
   if (is_tax('products-tag')) {
-    $tax_template = dirname(  __FILE__  ) . '/templates/archive-template.php';
+    $tax_template = dirname(  __FILE__  ) . '/templates/archive-no-grid-template.php';
   }
   return $tax_template;
 }
+
+}
+
 
 // end tag temaplate
 
@@ -162,7 +196,7 @@ function wb_free_products_catalog_meta_box_table( $post ) {
     <div class="wrap">
     <form action="/" method="post">
 
-        <label for="wb_products_colors"><?php _e( 'Colours', 'wb-product-catalog'); ?></label><BR>
+        <label for="wb_products_colors"><?php _e( 'Colors', 'wb-product-catalog'); ?></label><BR>
         <input type="text" id="wb_products_colors" name="wb_products_colors" value="<?php echo esc_html($colors); ?>"><BR><BR>
         
         <label for="wb_products_dim"><?php _e( 'Dimensions', 'wb-product-catalog'); ?></label><BR>
@@ -223,3 +257,139 @@ add_action( 'save_post', 'lpfw_save_meta_after_click_save_button' );
 
 
 // end custom fields
+
+
+// options page
+
+function wb_product_catalog_register_plugin_settings() {
+  //register our settings
+    register_setting( 'wb_product_catalog_plugin_option', 'wbcp_display_display_image' );
+    register_setting( 'wb_product_catalog_plugin_option', 'wbcp_display_cat_and_tag' );
+    register_setting( 'wb_product_catalog_plugin_option', 'wbcp_display_meta' );
+    register_setting( 'wb_product_catalog_plugin_option', 'wbcp_archive_layout' );
+}
+
+/**
+ * Register a custom menu page.
+ */
+function wb_product_catalog_option_page_function(){
+  add_menu_page( 
+      __( 'Catalog options', 'wb-product-catalog' ),
+      __( 'Catalog options', 'wb-product-catalog' ),
+      'manage_options',
+      'catalog-options',
+      'wb_product_catalog_option_page_content',
+      'dashicons-screenoptions',
+      59
+  ); 
+
+  add_action( 'admin_init', 'wb_product_catalog_register_plugin_settings' );
+}
+add_action( 'admin_menu', 'wb_product_catalog_option_page_function' );
+
+
+/**
+* Display a custom menu page
+*/
+function wb_product_catalog_option_page_content(){
+  echo '<div class="wrap">';
+  _e( '<h1>Admin Page Test</h1>', 'wb-product-catalog' );  
+  $image = get_option('wbcp_display_display_image');
+  $cattags = get_option('wbcp_display_cat_and_tag');
+  $meta = get_option('wbcp_display_meta');
+  $archive_layout = get_option('wbcp_archive_layout');
+
+
+  ?>
+<form method="post" action="options.php">
+<?php settings_fields( 'wb_product_catalog_plugin_option' ); ?>
+<?php do_settings_sections( 'wb_product_catalog_plugin_option' ); ?>
+<table class="form-table">
+    <tr valign="top">
+    <th scope="row">
+    <?php _e('Display product image', 'wb-product-catalog'); ?>
+    </th>
+    <td>
+    <input type="checkbox" 
+    name="wbcp_display_display_image"  
+    <?php if ($image == 'on') { echo "CHECKED"; } ?> />
+    </td>
+    </tr>
+
+    <tr valign="top">
+    <th scope="row">
+    <?php _e('Display categories and tags', 'wb-product-catalog'); ?>
+    </th>
+    <td>
+    <input type="checkbox" 
+    name="wbcp_display_cat_and_tag"  
+    <?php if ($cattags == 'on') { echo "CHECKED"; } ?> />
+    </td>
+    </tr>
+    
+    <tr valign="top">
+    <th scope="row">
+    <?php _e('Display meta', 'wb-product-catalog'); ?>
+    </th>
+    <td>
+    <input type="checkbox" 
+    name="wbcp_display_meta"  
+    <?php if ($meta == 'on') { echo "CHECKED"; } ?> />
+    </td>
+    </tr>
+
+    
+
+    <tr valign="top" style="border-top: 1px solid lightgray;">
+    <th scope="row">
+    <?php _e('Archive layout', 'wb-product-catalog'); ?>
+    </th>
+    <td>
+
+    <div class="layout">
+
+
+    <div class="div-grid">
+        <input type="radio" id="grid" name="wbcp_archive_layout" value="grid" <?php if($archive_layout == "grid") { echo "CHECKED"; } ?>>
+            <label for="grid">
+              <!-- <?php _e( 'Grid', 'wb-product-catalog') ?> -->
+              <img src="<?php echo plugin_dir_url(__FILE__) ?>/public/img/grid.png" class="grid-img">
+        </label>
+    </div>
+      
+
+    <div class="div-simple">
+        <input type="radio" id="simple" name="wbcp_archive_layout" value="simple" <?php if($archive_layout == "simple") { echo "CHECKED"; } ?>>
+            <label for="simple">
+              <!-- <?php _e( 'Simple', 'wb-product-catalog') ?> -->
+              <img src="<?php echo plugin_dir_url(__FILE__) ?>/public/img/simple.png" class="simple-img">
+          </label>
+    </div>
+      
+
+    </div>
+    
+
+    </td>
+    </td>
+    </tr>
+    
+</table>
+
+<?php submit_button(); ?>
+
+</form>
+
+<?php
+  echo '</div>';
+}
+
+
+	
+register_activation_hook( __FILE__, 'wb_catalog_products_default_plugin_option' );
+
+function wb_catalog_products_default_plugin_option(){
+  update_option( 'wbcp_display_display_image', "on");
+  update_option( 'wbcp_display_cat_and_tag', "on");
+  update_option( 'wbcp_display_meta', "on");
+}

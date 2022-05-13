@@ -1,0 +1,19 @@
+.toplevel_page_catalog-options input#grid:checked ~ label .grid-img {
+    box-shadow: 0 0 15px 1px;
+}
+
+.toplevel_page_catalog-options input#simple:checked ~ label .simple-img {
+    box-shadow: 0 0 15px 1px;
+}
+
+.toplevel_page_catalog-options .layout input{
+    display: none;
+}
+
+.toplevel_page_catalog-options .layout{
+    display: flex;
+}
+
+.toplevel_page_catalog-options .div-grid{
+    margin-right: 1rem;
+}
