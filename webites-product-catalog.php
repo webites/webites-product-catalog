@@ -7,7 +7,7 @@
  * Version:           1.1.0
  * Requires at least: 5.9.3
  * Requires PHP:      7.3
- * Author:            weBites
+ * Author:            Agencja interaktywna weBites.pl
  * Author URI:        https://webites.pl
  * License:           GPL v2 or later
  * Text Domain:       wb-product-catalog
@@ -98,10 +98,21 @@ add_filter( 'single_template', 'wb_free_catalog_template_single_product' );
 
 function wb_free_catalog_template_single_product( $page_template )
 {
-    if ( is_singular( 'products') ) {
+  $product_layout = get_option('wbcp_product_layout');
+
+  if ($product_layout == "default") {
+      if ( is_singular( 'products') ) {
         $page_template = dirname( __FILE__ ) . '/templates/single-product-template.php';
-    }
-    return $page_template;
+      }
+      return $page_template;
+  } else {
+      if ( is_singular( 'products') ) {
+        $page_template = dirname( __FILE__ ) . '/templates/single-product-template-shop.php';
+      }
+      return $page_template;
+  }
+
+    
 }
 
 // end single post templates
@@ -267,6 +278,7 @@ function wb_product_catalog_register_plugin_settings() {
     register_setting( 'wb_product_catalog_plugin_option', 'wbcp_display_cat_and_tag' );
     register_setting( 'wb_product_catalog_plugin_option', 'wbcp_display_meta' );
     register_setting( 'wb_product_catalog_plugin_option', 'wbcp_archive_layout' );
+    register_setting( 'wb_product_catalog_plugin_option', 'wbcp_product_layout' );
 }
 
 /**
@@ -293,11 +305,13 @@ add_action( 'admin_menu', 'wb_product_catalog_option_page_function' );
 */
 function wb_product_catalog_option_page_content(){
   echo '<div class="wrap">';
-  _e( '<h1>Admin Page Test</h1>', 'wb-product-catalog' );  
+  _e( '<h1>Products Catalog - page options</h1>', 'wb-product-catalog' );  
   $image = get_option('wbcp_display_display_image');
   $cattags = get_option('wbcp_display_cat_and_tag');
   $meta = get_option('wbcp_display_meta');
   $archive_layout = get_option('wbcp_archive_layout');
+  $product_layout = get_option('wbcp_product_layout');
+
 
 
   ?>
@@ -349,23 +363,57 @@ function wb_product_catalog_option_page_content(){
     <div class="layout">
 
 
-    <div class="div-grid">
-        <input type="radio" id="grid" name="wbcp_archive_layout" value="grid" <?php if($archive_layout == "grid") { echo "CHECKED"; } ?>>
-            <label for="grid">
-              <!-- <?php _e( 'Grid', 'wb-product-catalog') ?> -->
-              <img src="<?php echo plugin_dir_url(__FILE__) ?>/public/img/grid.png" class="grid-img">
-        </label>
-    </div>
+      <div class="div-grid">
+          <input type="radio" id="grid" name="wbcp_archive_layout" value="grid" <?php if($archive_layout == "grid") { echo "CHECKED"; } ?>>
+              <label for="grid">
+                <!-- <?php _e( 'Grid', 'wb-product-catalog') ?> -->
+                <img src="<?php echo plugin_dir_url(__FILE__) ?>/public/img/grid.png" class="grid-img">
+          </label>
+      </div>
+        
+
+      <div class="div-simple">
+          <input type="radio" id="simple" name="wbcp_archive_layout" value="simple" <?php if($archive_layout == "simple") { echo "CHECKED"; } ?>>
+              <label for="simple">
+                <!-- <?php _e( 'Simple', 'wb-product-catalog') ?> -->
+                <img src="<?php echo plugin_dir_url(__FILE__) ?>/public/img/simple.png" class="simple-img">
+            </label>
+      </div>
       
 
-    <div class="div-simple">
-        <input type="radio" id="simple" name="wbcp_archive_layout" value="simple" <?php if($archive_layout == "simple") { echo "CHECKED"; } ?>>
-            <label for="simple">
-              <!-- <?php _e( 'Simple', 'wb-product-catalog') ?> -->
-              <img src="<?php echo plugin_dir_url(__FILE__) ?>/public/img/simple.png" class="simple-img">
-          </label>
     </div>
-      
+
+    </td>
+    </td>
+    </tr>
+
+    <tr valign="top" style="border-top: 1px solid lightgray;">
+    <th scope="row">
+    <?php _e('Product layout', 'wb-product-catalog'); ?>
+    </th>
+    <td>
+
+
+    <div class="product-layout">
+
+
+      <div class="div-default">
+          <input type="radio" id="default" name="wbcp_product_layout" value="default" <?php if($product_layout == "default") { echo "CHECKED"; } ?>>
+              <label for="default">
+                <!-- <?php _e( 'default', 'wb-product-catalog') ?> -->
+                <img src="<?php echo plugin_dir_url(__FILE__) ?>/public/img/product-default.png" class="default-img">
+          </label>
+      </div>
+        
+
+      <div class="div-card">
+          <input type="radio" id="card" name="wbcp_product_layout" value="card" <?php if($product_layout == "card") { echo "CHECKED"; } ?>>
+              <label for="card">
+                <!-- <?php _e( 'card', 'wb-product-catalog') ?> -->
+                <img src="<?php echo plugin_dir_url(__FILE__) ?>/public/img/product-card.png" class="card-img">
+            </label>
+      </div>
+
 
     </div>
     
@@ -382,14 +430,4 @@ function wb_product_catalog_option_page_content(){
 
 <?php
   echo '</div>';
-}
-
-
-	
-register_activation_hook( __FILE__, 'wb_catalog_products_default_plugin_option' );
-
-function wb_catalog_products_default_plugin_option(){
-  update_option( 'wbcp_display_display_image', "on");
-  update_option( 'wbcp_display_cat_and_tag', "on");
-  update_option( 'wbcp_display_meta', "on");
 }

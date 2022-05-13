@@ -35,6 +35,10 @@ In archive of products (products catalog) items can be displays on two ways:
 * grid
 * simple method (all items have 100% width)
 
+Simple product page can look like:
+* e-commerce product page
+* default plugin product page
+
 You can set product from our plugin as product in SEO plugin to better indexing.
 
 == Installation ==
@@ -58,9 +62,13 @@ Manual:
 
 == Frequently Asked Questions ==
  
-= Where Plugin displays currencies =
+= Where Plugin displays products =
  
-The plugin displays currencies by posts and pages if you set this option in Plugin Options.
+The plugin displays products where you set them. On menu settings you can enable display of categories, tags or single products.
+
+= Can I modify plugin =
+
+Yes, but after update you will lost all changes. Better use hooks, native functions and CSS styles. If you want modify the Plugin to your needs you can contact with us on [weBites website](https://webites.pl "weBites website")!
 
 
 == Screenshots ==

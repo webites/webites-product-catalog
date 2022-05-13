@@ -164,6 +164,5 @@ if ($image == "on" ) {
     <?php the_content(); ?>
 </div>
 
-
 <?php get_footer(); ?>
 

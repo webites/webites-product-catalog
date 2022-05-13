@@ -17,3 +17,25 @@
 .toplevel_page_catalog-options .div-grid{
     margin-right: 1rem;
 }
+
+
+.toplevel_page_catalog-options input#default:checked ~ label .default-img {
+    box-shadow: 0 0 15px 1px;
+}
+
+.toplevel_page_catalog-options input#card:checked ~ label .card-img {
+    box-shadow: 0 0 15px 1px;
+}
+
+.toplevel_page_catalog-options .product-layout input{
+    display: none;
+}
+
+.toplevel_page_catalog-options .product-layout{
+    display: flex;
+}
+
+.toplevel_page_catalog-options .div-grid,
+.toplevel_page_catalog-options .div-default{
+    margin-right: 1rem;
+}
