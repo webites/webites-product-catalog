@@ -1,0 +1,191 @@
+# Blank WordPress Pot
+# Copyright 2014 ...
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Blank WordPress Pot v1.0.0\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2022-05-13 17:11+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Your Team <translations@example.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: templates/archive-no-grid-template.php:14 templates/archive-template.php:14
+msgid "Read more"
+msgstr ""
+
+#: templates/archive-no-grid-template.php:21 templates/archive-template.php:21
+msgid "Older posts"
+msgstr ""
+
+#: templates/archive-no-grid-template.php:22 templates/archive-template.php:22
+msgid "Newer posts"
+msgstr ""
+
+#: templates/archive-no-grid-template.php:26 templates/archive-template.php:26
+msgid "No posts"
+msgstr ""
+
+#: templates/single-product-template-shop.php:38
+#: templates/single-product-template-shop.php:84
+msgid "Info:"
+msgstr ""
+
+#: templates/single-product-template-shop.php:40
+#: templates/single-product-template-shop.php:86
+msgid "Colors:"
+msgstr ""
+
+#: templates/single-product-template-shop.php:43
+#: templates/single-product-template-shop.php:89
+msgid "Dimensions:"
+msgstr ""
+
+#: templates/single-product-template-shop.php:46
+#: templates/single-product-template-shop.php:92
+msgid "SKU:"
+msgstr ""
+
+#: templates/single-product-template-shop.php:49
+#: templates/single-product-template-shop.php:95
+msgid "Series:"
+msgstr ""
+
+#: templates/single-product-template-shop.php:52
+#: templates/single-product-template-shop.php:98
+msgid "Type:"
+msgstr ""
+
+#: templates/single-product-template-shop.php:60
+#: templates/single-product-template-shop.php:106
+#: templates/single-product-template.php:58
+msgid "Product categories"
+msgstr ""
+
+#: templates/single-product-template-shop.php:63
+#: templates/single-product-template-shop.php:109
+#: templates/single-product-template.php:62
+msgid "Product tags"
+msgstr ""
+
+#: templates/single-product-template.php:28 webites-product-catalog.php:228
+msgid "Available"
+msgstr ""
+
+#: templates/single-product-template.php:36
+msgid "Not available"
+msgstr ""
+
+#: templates/single-product-template.php:92 webites-product-catalog.php:210
+msgid "Colors"
+msgstr ""
+
+#: templates/single-product-template.php:102 webites-product-catalog.php:213
+msgid "Dimensions"
+msgstr ""
+
+#: templates/single-product-template.php:113 webites-product-catalog.php:216
+msgid "SKU"
+msgstr ""
+
+#: templates/single-product-template.php:124 webites-product-catalog.php:219
+msgid "Series"
+msgstr ""
+
+#: templates/single-product-template.php:135 webites-product-catalog.php:222
+msgid "Type"
+msgstr ""
+
+#: templates/single-product-template.php:146 webites-product-catalog.php:225
+msgid "Price"
+msgstr ""
+
+#: webites-product-catalog.php:38
+msgid "Products"
+msgstr ""
+
+#: webites-product-catalog.php:39
+msgid "Product"
+msgstr ""
+
+#: webites-product-catalog.php:44
+msgid "products"
+msgstr ""
+
+#: webites-product-catalog.php:58
+msgid "Products categories"
+msgstr ""
+
+#: webites-product-catalog.php:62
+msgid "products-categories"
+msgstr ""
+
+#: webites-product-catalog.php:78
+msgid "Products tags"
+msgstr ""
+
+#: webites-product-catalog.php:82
+msgid "products-tags"
+msgstr ""
+
+#: webites-product-catalog.php:181
+msgid "Product parameters"
+msgstr ""
+
+#: webites-product-catalog.php:289 webites-product-catalog.php:290
+msgid "Catalog options"
+msgstr ""
+
+#: webites-product-catalog.php:308
+msgid "<h1>Products Catalog - page options</h1>"
+msgstr ""
+
+#: webites-product-catalog.php:324
+msgid "Display product image"
+msgstr ""
+
+#: webites-product-catalog.php:335
+msgid "Display categories and tags"
+msgstr ""
+
+#: webites-product-catalog.php:346
+msgid "Display meta"
+msgstr ""
+
+#: webites-product-catalog.php:359
+msgid "Archive layout"
+msgstr ""
+
+#: webites-product-catalog.php:369
+msgid "Grid"
+msgstr ""
+
+#: webites-product-catalog.php:378
+msgid "Simple"
+msgstr ""
+
+#: webites-product-catalog.php:392
+msgid "Product layout"
+msgstr ""
+
+#: webites-product-catalog.php:403
+msgid "default"
+msgstr ""
+
+#: webites-product-catalog.php:412
+msgid "card"
+msgstr ""
