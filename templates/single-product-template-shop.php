@@ -83,19 +83,19 @@
                 <?php if ( $meta == "on" ){ ?>
                 <ul class="metadata"><h2><?php _e( "Info:", "wb-product-catalog") ?></h2>
                     <?php if($colors) {
-                    echo '<li><strong>'. __( "Colors:", "wb-product-catalog") . ' </strong>'. $colors .'</li>';
+                    echo '<li><strong>'. __( "Colors:", "wb-product-catalog") . ' </strong>'. esc_html($colors) .'</li>';
                     } ?>
                     <?php if($dimensions) {
-                    echo '<li><strong>'. __( "Dimensions:", "wb-product-catalog") . ' </strong>'. $dimensions .'</li>';
+                    echo '<li><strong>'. __( "Dimensions:", "wb-product-catalog") . ' </strong>'. esc_html($dimensions) .'</li>';
                     } ?>
                     <?php if($sku) {
-                    echo '<li><strong>'. __( "SKU:", "wb-product-catalog") . ' </strong>'. $sku .'</li>';
+                    echo '<li><strong>'. __( "SKU:", "wb-product-catalog") . ' </strong>'. esc_html($sku) .'</li>';
                     } ?>
                     <?php if($series) {
-                    echo '<li><strong>'. __( "Series:", "wb-product-catalog") . ' </strong>'. $series .'</li>';
+                    echo '<li><strong>'. __( "Series:", "wb-product-catalog") . ' </strong>'. esc_html($series) .'</li>';
                     } ?>
                     <?php if($type) {
-                    echo '<li><strong>'. __( "Type:", "wb-product-catalog") . ' </strong>'. $type .'</li>';
+                    echo '<li><strong>'. __( "Type:", "wb-product-catalog") . ' </strong>'. esc_html($type) .'</li>';
                     } ?>
                 </ul>
                 <?php } ?>
