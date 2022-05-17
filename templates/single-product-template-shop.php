@@ -29,8 +29,8 @@
             </div>
 
             <div class="product-info">
-                <h1><?php echo $title; ?></h1>
-                <?php if ( $meta == "on" ) { echo "<bdi class='price'>".$price."</bdi>"; } ?>
+                <h1><?php echo esc_html($title) ?></h1>
+                <?php if ( $meta == "on" ) { echo "<bdi class='price'>". esc_html($price) ."</bdi>"; } ?>
                 <p>
                     <?php if(has_excerpt()) { the_excerpt(); } ?>
                 </p>
@@ -75,8 +75,8 @@
 
             <div class="product-info">
             
-            <h1><?php echo $title; ?></h1>
-                <?php if ( $meta == "on" ) { echo "<bdi class='price'>".$price."</bdi>"; } ?>
+            <h1><?php echo esc_html($title); ?></h1>
+                <?php if ( $meta == "on" ) { echo "<bdi class='price'>".esc_html($price)."</bdi>"; } ?>
                 <p>
                     <?php if(has_excerpt()) { the_excerpt(); } ?>
                 </p>
